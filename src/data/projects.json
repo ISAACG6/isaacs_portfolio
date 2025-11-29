@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce Platform Redesign",
+    "description": "Led the complete redesign of a major e-commerce platform, focusing on improving user experience and increasing conversion rates. Through extensive user research and iterative testing, we created an intuitive interface that resulted in a 35% increase in sales and significantly reduced cart abandonment.",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop"
+  },
+  {
+    "id": 2,
+    "title": "Mobile Banking Application",
+    "description": "Designed an intuitive mobile banking experience tailored for millennials and Gen-Z users. The app features biometric authentication, real-time spending insights, and a simplified money transfer system. User testing showed a 90% satisfaction rate and the app now serves over 500,000 active users.",
+    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop"
+  },
+  {
+    "id": 3,
+    "title": "Healthcare Dashboard System",
+    "description": "Created a comprehensive dashboard for healthcare professionals to track and analyze patient data in real-time. The system integrates with multiple data sources and provides actionable insights through clear data visualization. Reduced administrative time by 40% and improved patient care coordination.",
+    "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop"
+  },
+  {
+    "id": 4,
+    "title": "Social Impact Platform",
+    "description": "Reimagined how people connect and engage with social causes. The platform emphasizes meaningful interactions and community building while maintaining user privacy and mental wellbeing. Features include volunteer matching, impact tracking, and collaborative project spaces for nonprofit organizations.",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop"
+  }
+]

@@ -1,68 +1,411 @@
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #213547;
+  background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* ========================================
+   NAVIGATION BAR - MOBILE FIRST
+   ======================================== */
+.navbar {
+  background-color: #ffffff;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-brand {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d3436;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 24px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.nav-links {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  gap: 15px;
+}
+
+.nav-links.active {
+  display: flex;
+}
+
+.nav-link-custom {
+  color: #636e72;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #2d3436;
+}
+
+.active-link {
+  color: #2d3436;
+}
+
+.active-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: #00b894;
+}
+
+/* ========================================
+   HERO BANNER SECTION - MOBILE FIRST
+   ======================================== */
+.hero-banner-modern {
+  background-image: url(/unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: auto;
+  padding: 60px 0 120px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content.container {
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.col-left,
+.col-right {
+  flex: 1;
+  width: 100%;
+}
+
+.col-right {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.text-overlay {
+  background-color: rgba(45, 52, 54, 0.85);
+  padding: 40px;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.name-highlight {
+  color: #00b894;
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #dfe6e9;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.profile-image-container {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  transform: translateY(80px); /* Pushes image down to overlap */
+  z-index: 10;
+}
+
+.green-accent-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  background-color: #00b894;
+  z-index: 1;
+}
+
+.profile-image-large {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: grayscale(100%);
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* ========================================
+   PORTFOLIO PROJECTS PAGE - MOBILE FIRST
+   ======================================== */
+.portfolio-page {
+  background-color: #ffffff;
+  padding: 120px 0 40px 0;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-header-section {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.portfolio-main-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 15px;
+}
+
+.portfolio-main-subtitle {
+  font-size: 1.2rem;
+  color: #636e72;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.projects-list {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.project-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  padding: 25px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.project-content-side,
+.project-image-side {
+  width: 100%;
+}
+
+.project-row-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.project-row-description {
+  font-size: 1.1rem;
+  color: #636e72;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.view-project-btn {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-project-btn:hover {
+  background-color: #009874;
+  transform: translateY(-2px);
+}
+
+.project-row-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-height: 500px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - TABLET & UP
+   ======================================== */
+@media (min-width: 769px) {
+  /* Navigation */
+  .menu-toggle {
+    display: none;
   }
-  a:hover {
-    color: #747bff;
+  
+  .nav-links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: 30px;
+    padding: 0;
+    box-shadow: none;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  /* Hero Banner */
+  .hero-content.container {
+    padding: 0 60px;
+  }
+  
+  .row {
+    flex-direction: row;
+    gap: 60px;
+  }
+  
+  .col-left,
+  .col-right {
+    min-width: 300px;
+  }
+  
+  .col-right {
+    justify-content: flex-end;
+  }
+  
+  .text-overlay {
+    padding: 50px;
+    margin-bottom: 0;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-banner-modern {
+    min-height: 500px;
+    padding: 0 0 150px 0;
+    margin-bottom: -100px; /* Larger overlap on desktop */
+  }
+  
+  .profile-image-container {
+    margin: 0;
+    transform: translateY(100px);
+  }
+  
+  /* Portfolio Projects */
+  .portfolio-page {
+    padding: 150px 0 80px 0;
+  }
+  
+  .portfolio-header-section {
+    margin-bottom: 80px;
+  }
+  
+  .portfolio-main-title {
+    font-size: 3rem;
+  }
+  
+  .projects-list {
+    padding: 0 40px;
+  }
+  
+  .project-row {
+    gap: 60px;
+    margin-bottom: 100px;
+    padding: 40px;
+  }
+  
+  .project-row.image-right {
+    flex-direction: row;
+  }
+  
+  .project-row.image-left {
+    flex-direction: row-reverse;
+  }
+  
+  .project-content-side {
+    min-width: 400px;
+  }
+  
+  .project-image-side {
+    min-width: 500px;
+  }
+  
+  .project-row-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - DESKTOP LARGE
+   ======================================== */
+@media (min-width: 1025px) {
+  .project-content-side,
+  .project-image-side {
+    flex: 1;
   }
 }
