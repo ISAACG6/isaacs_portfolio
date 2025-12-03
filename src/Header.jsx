@@ -13,7 +13,14 @@ export default function Header () {
             {/* Navigation Bar */}
             <nav className="navbar">
                 <div className="container">
-                    <a href="#home" className="logo-brand">W</a>
+                    <a href="#home" className="logo-brand">
+                        <span className="logo-desktop">IG</span>
+                        <img
+                            src="/IsaacHeadshot.JPG"
+                            alt="Isaac"
+                            className="logo-mobile"
+                        />
+                    </a>
                     
                     <button 
                         className="menu-toggle"
@@ -38,11 +45,13 @@ export default function Header () {
                         <div className="col-left">
                             <div className="text-overlay">
                                 <h1 className="hero-title">
-                                    Hi, I'm <span className="name-highlight">Isaac</span>.
+                                    Hi, I'm <span className="name-highlight">Isaac</span>
                                 </h1>
                                 <p className="hero-subtitle">
-                                    I'm a Minnesota-based UX designer who enjoys discovering & 
-                                    crafting thoughtful solutions to complex challenges.
+                                    I'm an Informatics student at the University of Washington and an aspiring
+                                    product developer with a passion for creating impactful and informed solutions through data and research.
+                                    If you have any opportunities or inquiries, I would love to connect!
+                                     
                                 </p>
                             </div>
                         </div>

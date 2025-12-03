@@ -1,13 +1,10 @@
-/* ========================================
-   GLOBAL STYLES
-   ======================================== */
+/* ============= GLOBAL ============= */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: #213547;
   background-color: #ffffff;
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,14 +17,12 @@
 }
 
 body {
-  margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
 
-/* ========================================
-   NAVIGATION BAR - MOBILE FIRST
-   ======================================== */
+/* ============= NAVBAR (MOBILE FIRST) ============= */
+
 .navbar {
   background-color: #ffffff;
   padding: 20px 0;
@@ -44,10 +39,22 @@ body {
 }
 
 .logo-brand {
-  font-size: 28px;
-  font-weight: 700;
-  color: #2d3436;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+}
+
+/* Mobile: show circular PFP, hide IG text */
+.logo-mobile {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-desktop {
+  display: none;
 }
 
 .menu-toggle {
@@ -64,7 +71,7 @@ body {
   top: 70px;
   left: 0;
   right: 0;
-  background-color: white;
+  background-color: #ffffff;
   flex-direction: column;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -101,18 +108,16 @@ body {
   background-color: #00b894;
 }
 
-/* ========================================
-   HERO BANNER SECTION - MOBILE FIRST
-   ======================================== */
+/* ============= HERO (MOBILE FIRST) ============= */
+
 .hero-banner-modern {
   background-image: url(/unsplash.jpg);
   background-size: cover;
   background-position: center;
-  min-height: auto;
-  padding: 60px 0 120px 0;
+  padding: 40px 0 40px 0;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 0;
 }
 
@@ -126,38 +131,36 @@ body {
   padding: 0 20px;
 }
 
+/* On MOBILE: only show the about card, hide big hero photo */
 .row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 24px;
   width: 100%;
 }
 
 .col-left,
 .col-right {
-  flex: 1;
   width: 100%;
 }
 
 .col-right {
-  display: flex;
-  justify-content: center;
-  align-self: center;
+  display: none; /* hide big image on mobile */
 }
 
 .text-overlay {
   background-color: rgba(45, 52, 54, 0.85);
-  padding: 40px;
+  padding: 24px;
   max-width: 600px;
-  margin-bottom: 40px;
+  margin: 0 auto;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 300;
   color: #ffffff;
-  margin-bottom: 25px;
+  margin-bottom: 16px;
   line-height: 1.2;
 }
 
@@ -167,19 +170,19 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #dfe6e9;
-  line-height: 1.7;
-  margin: 0;
+  line-height: 1.6;
 }
 
+/* big hero image pieces (only used on desktop) */
 .profile-image-container {
   position: relative;
   max-width: 600px;
   width: 100%;
   height: auto;
   margin: 0 auto;
-  transform: translateY(80px); /* Pushes image down to overlap */
+  transform: translateY(80px);
   z-index: 10;
 }
 
@@ -205,9 +208,8 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* ========================================
-   PORTFOLIO PROJECTS PAGE - MOBILE FIRST
-   ======================================== */
+/* ============= PORTFOLIO (MOBILE FIRST, simplified) ============= */
+
 .portfolio-page {
   background-color: #ffffff;
   padding: 120px 0 40px 0;
@@ -299,15 +301,14 @@ body {
   max-height: 500px;
 }
 
-/* ========================================
-   RESPONSIVE DESIGN - TABLET & UP
-   ======================================== */
+/* ============= TABLET & UP (DESKTOP ENHANCEMENTS) ============= */
+
 @media (min-width: 769px) {
-  /* Navigation */
+  /* Navbar: show IG, hide photo, show inline nav */
   .menu-toggle {
     display: none;
   }
-  
+
   .nav-links {
     display: flex;
     position: static;
@@ -316,93 +317,109 @@ body {
     padding: 0;
     box-shadow: none;
   }
-  
-  /* Hero Banner */
+
+  .logo-mobile {
+    display: none;
+  }
+
+  .logo-desktop {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d3436;
+  }
+
+  /* Hero: shorter, with overlapping big image visible again */
   .hero-content.container {
     padding: 0 60px;
   }
-  
+
   .row {
     flex-direction: row;
     gap: 60px;
   }
-  
+
   .col-left,
   .col-right {
     min-width: 300px;
+    flex: 1 1 0;
+    width: auto;
   }
-  
+
   .col-right {
+    display: flex;          /* show big image column again */
     justify-content: flex-end;
   }
-  
+
   .text-overlay {
-    padding: 50px;
+    padding: 40px;
     margin-bottom: 0;
   }
-  
+
   .hero-title {
     font-size: 3rem;
   }
-  
+
   .hero-banner-modern {
-    min-height: 500px;
-    padding: 0 0 150px 0;
-    margin-bottom: -100px; /* Larger overlap on desktop */
+    min-height: 380px;      /* shorter than before */
+    padding: 0 0 110px 0;
+    margin-bottom: -80px;   /* overlap next section */
   }
-  
+
   .profile-image-container {
-    margin: 0;
-    transform: translateY(100px);
+    max-width: 500px;
+    transform: translateY(80px); /* overlap amount */
   }
-  
-  /* Portfolio Projects */
+
+  .green-accent-bar {
+    display: block;
+  }
+
+  /* Portfolio layout enhancements */
   .portfolio-page {
     padding: 150px 0 80px 0;
   }
-  
+
   .portfolio-header-section {
     margin-bottom: 80px;
   }
-  
+
   .portfolio-main-title {
     font-size: 3rem;
   }
-  
+
   .projects-list {
     padding: 0 40px;
   }
-  
+
   .project-row {
     gap: 60px;
     margin-bottom: 100px;
     padding: 40px;
   }
-  
+
   .project-row.image-right {
     flex-direction: row;
   }
-  
+
   .project-row.image-left {
     flex-direction: row-reverse;
   }
-  
+
   .project-content-side {
     min-width: 400px;
   }
-  
+
   .project-image-side {
     min-width: 500px;
   }
-  
+
   .project-row-title {
     font-size: 2.2rem;
   }
 }
 
-/* ========================================
-   RESPONSIVE DESIGN - DESKTOP LARGE
-   ======================================== */
+/* Large desktop: keep equal width columns for projects */
 @media (min-width: 1025px) {
   .project-content-side,
   .project-image-side {
