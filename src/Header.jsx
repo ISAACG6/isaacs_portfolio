@@ -10,29 +10,30 @@ export default function Header () {
     return (
         <div>
         
-            {/* Navigation Bar */}
             <nav className="navbar">
                 <div className="container">
                     <a href="#home" className="logo-brand">
-                        <span className="logo-desktop">IG</span>
-                        <img
-                            src="/IsaacHeadshot.JPG"
-                            alt="Isaac"
-                            className="logo-mobile"
-                        />
+                    <span className="logo-desktop">IG</span>
+                    <img
+                        src="/IsaacHeadshot.JPG"
+                        alt="Isaac"
+                        className="logo-mobile"
+                    />
                     </a>
-                    
-                    <button 
-                        className="menu-toggle"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+
+                    {/* Hamburger for mobile */}
+                    <button
+                    className="menu-toggle"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
-                        ☰
+                    ☰
                     </button>
-                    
-                    <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-                        <a href="#projects" className="nav-link-custom active-link">Projects</a>
-                        <a href="#about" className="nav-link-custom">About</a>
-                        <a href="#resume" className="nav-link-custom">Resume</a>
+
+                    {/* Nav Links */}
+                    <div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+                    <a href="#projects" className="nav-link-custom active-link">Projects</a>
+                    <a href="#resume" className="nav-link-custom">Resume</a>
+                    <a href="#contact" className="nav-link-custom">Contact</a>
                     </div>
                 </div>
             </nav>

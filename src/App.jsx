@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Portfolio from './portfolio';
 import Header from './Header';
-import { Footer } from './Footer';
+import Resume from './Resume';
+import  Footer  from './Footer';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
 
     <Header />
     <Portfolio />
+    <Resume />
     <Footer />
 
     </div>

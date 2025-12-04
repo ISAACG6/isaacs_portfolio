@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 
 
-export function Footer () {
+export default function Footer () {
     return (
         <div>
             <h1>
