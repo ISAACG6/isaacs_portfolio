@@ -1,5 +1,9 @@
-/* ============= GLOBAL ============= */
+/* ============================================================
+   ============= GLOBAL STYLES ================================
+   ============================================================ */
+
 :root {
+  --accent-green: #10b981;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -21,261 +25,281 @@ body {
   min-height: 100vh;
 }
 
-/* ============================================================
-   ============= NAVBAR (UPDATED — MOBILE FIRST) ==============
-   ============================================================ */
-
-.navbar {
-  background-color: #ffffff;
-  padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%
-}
-
-.nav-link-custom {
-  color: #f8f9fa;
-  text-decoration: none;
-  position: relative; /* for underline pseudo-element */
-}
-
-/* Base active style (mobile/tablet): simple bottom border */
-.nav-link-custom.nav-link-active {
-  border-bottom: 2px solid #1f7a3a; /* darker green */
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+/* ============================================================
+   ============= NAVBAR (REACT-BOOTSTRAP) =====================
+   ============================================================ */
+
+.styled-navbar {
+  background-color: #f8f9fa !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .logo-brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;   /* spacing between logo and title */
+  gap: 0.75rem;
   text-decoration: none;
+  transition: opacity 0.3s ease;
 }
 
+.logo-brand:hover {
+  opacity: 0.8;
+}
 
-/* MOBILE: PFP visible */
+.logo,
+.logo-desktop {
+  font-weight: 800;
+  color: var(--accent-green) !important;
+  font-size: 1.75rem;
+}
+
 .logo-mobile {
-  display: block;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* MOBILE: Hide "IG" text */
-.logo-desktop {
-  display: none;
-}
-
-/* Hamburger button (mobile only) */
-.menu-toggle {
-  display: block;
-  background: none;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #2d3436;
-}
-
-/* MOBILE: hidden by default */
-.nav-links {
-  display: none;
-  flex-direction: column;
-  gap: 15px;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.nav-links.active {
-  display: flex;
-}
-
-.nav-link-custom {
-  color: #636e72;
-  font-weight: 500;
-  text-decoration: none;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-link-custom:hover {
-  color: #2d3436;
-}
-
-.active-link {
-  color: #2d3436;
-}
-
-.active-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 100%;
-  height: 3px;
-  background-color: #00b894;
-}
-
-/* ============================================================
-   ============= DESKTOP NAVBAR (≥769px) ======================
-   ============================================================ */
-
-@media (min-width: 769px) {
-
-  /* hide hamburger */
-  .menu-toggle {
-    display: none;
-  }
-
-  /* show inline nav */
-  .nav-links {
-    display: flex;
-    position: static;
-    flex-direction: row;
-    gap: 30px;
-    padding: 0;
-    background: none;
-    box-shadow: none;
-  }
-
-  .nav-link-custom.nav-link-active {
-    border-bottom-width: 3px;
-  }
-
-  /* desktop: show IG text */
-  .logo-desktop {
-    display: inline-block;
-    font-size: 28px;
-    font-weight: 700;
-    color: #2d3436;
-  }
-
-  /* desktop: hide PFP */
+/* Show/hide logo based on screen size */
+@media (min-width: 992px) {
   .logo-mobile {
     display: none;
   }
 }
 
+@media (max-width: 991px) {
+  .logo-desktop {
+    display: none;
+  }
+}
+
+/* Nav link wrapper */
+.nav-link-wrapper {
+  position: relative;
+  padding: 0.5rem 1rem;
+}
+
+/* Styled nav links */
+.nav-link-custom,
+.nav-link-custom:link,
+.nav-link-custom:visited {
+  color: #2d3748 !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-custom:hover {
+  color: #1a202c !important;
+}
+
+.nav-link-custom.nav-link-active,
+a.nav-link-custom.nav-link-active,
+.nav-link-custom.nav-link-active:link,
+.nav-link-custom.nav-link-active:visited {
+  color: #2d3748 !important;
+}
+
+/* Underline animation - right to left */
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-green);
+  transition: width 0.4s ease;
+}
+
+.nav-link-custom:hover::after,
+.nav-link-custom.nav-link-active::after {
+  width: 100%;
+  right: auto;
+  left: 0;
+}
+
+/* Navbar toggler */
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  color: #4a5568;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Smooth dropdown animation */
+.navbar-collapse {
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem 0;
+    animation: slideDown 0.3s ease;
+    z-index: 1000;
+  }
+
+  .navbar-collapse.show {
+    animation: slideDown 0.3s ease;
+  }
+
+  .navbar-collapse.collapsing {
+    transition: height 0.3s ease;
+  }
+
+  .nav-link-wrapper {
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ============================================================
-   ============= HERO (MOBILE FIRST) ==========================
+   ============= HERO SECTION =================================
    ============================================================ */
 
-.hero-banner-modern {
-  background-image: url(/unsplash.jpg);
-  background-size: cover;
-  background-position: center;
-  padding: 40px 0 40px 0;
-  position: relative;
+.hero-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 80px 20px 80px;
+  min-height: 100vh;
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-content.container {
-  max-width: 100%;
-  padding: 0 20px;
-}
-
-/* MOBILE: only show about card */
-.row {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 24px;
-  width: 100%;
-}
-
-.col-left,
-.col-right {
-  width: 100%;
-}
-
-.col-right {
-  display: none;
-}
-
-.text-overlay {
-  background-color: rgba(45, 52, 54, 0.85);
-  padding: 24px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-size: 2rem;
-  font-weight: 300;
-  color: #ffffff;
-  margin-bottom: 16px;
-  line-height: 1.2;
-}
-
-.name-highlight {
-  color: #00b894;
-  font-weight: 400;
-}
-
-.hero-subtitle {
-  font-size: 1rem;
-  color: #dfe6e9;
-  line-height: 1.6;
-}
-
-/* Big hero image (desktop only) */
-.profile-image-container {
   position: relative;
-  max-width: 600px;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  transform: translateY(80px);
-  z-index: 10;
+  overflow: hidden;
 }
 
-.green-accent-bar {
+/* Subtle background pattern */
+.hero-section::before {
+  content: '';
   position: absolute;
-  right: 0;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 60px;
-  background-color: #00b894;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
   z-index: 1;
 }
 
-.profile-image-large {
+/* Text Content */
+.hero-text {
+  text-align: center;
+}
+
+.hero-heading {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #2d3748;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.hero-name {
+  color: var(--accent-green);
+  font-weight: 600;
+  position: relative;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: #4a5568;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Profile Image */
+.hero-image {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.image-wrapper {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.profile-photo {
   width: 100%;
   height: auto;
+  border-radius: 12px;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   display: block;
   position: relative;
   z-index: 2;
+  transition: transform 0.3s ease;
   filter: grayscale(100%);
-  object-fit: cover;
-  object-position: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.profile-photo:hover {
+  transform: translateY(-4px);
+}
+
+/* Green accent border */
+.accent-border {
+  position: absolute;
+  top: 12px;
+  right: -12px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--accent-green);
+  border-radius: 12px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.image-wrapper:hover .accent-border {
+  top: 24px;
+  right: -24px;
 }
 
 /* ============================================================
-   ============= PORTFOLIO (MOBILE FIRST) =====================
+   ============= PORTFOLIO SECTION ============================
    ============================================================ */
 
 .portfolio-page {
@@ -344,7 +368,7 @@ body {
 }
 
 .view-project-btn {
-  background-color: #00b894;
+  background-color: var(--accent-green);
   color: white;
   border: none;
   padding: 14px 32px;
@@ -356,7 +380,7 @@ body {
 }
 
 .view-project-btn:hover {
-  background-color: #009874;
+  background-color: #059669;
   transform: translateY(-2px);
 }
 
@@ -370,61 +394,38 @@ body {
 }
 
 /* ============================================================
-   ============= DESKTOP ENHANCEMENTS (≥769px) ================
+   ============= TABLET STYLES (768px and up) =================
    ============================================================ */
 
-@media (min-width: 769px) {
-  .hero-content.container {
-    padding: 0 60px;
+@media (min-width: 768px) {
+  /* Hero Section */
+  .hero-section {
+    padding: 100px 40px 100px;
   }
 
-  .row {
-    flex-direction: row;
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
     gap: 60px;
   }
 
-  .col-left,
-  .col-right {
-    min-width: 300px;
-    flex: 1 1 0;
-    width: auto;
+  .hero-text {
+    text-align: left;
   }
 
-  .col-right {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .profile-image-large {
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
-    border-radius: 15px; /* optional */
-  }
-
-  .text-overlay {
-    padding: 40px;
-    margin-bottom: 0;
-  }
-
-  .hero-title {
+  .hero-heading {
     font-size: 3rem;
   }
 
-  .hero-banner-modern {
-    min-height: 380px;
-    padding: 0 0 110px 0;
-    margin-bottom: -80px;
+  .hero-description {
+    margin: 0;
+    max-width: none;
   }
 
-  .profile-image-container {
-    max-width: 500px;
-    transform: translateY(80px);
-    border-radius: 15px;
+  .image-wrapper {
+    max-width: 450px;
   }
 
-  .green-accent-bar {
-    display: block;
-  }
-
+  /* Portfolio Section */
   .portfolio-page {
     padding: 150px 0 80px 0;
   }
@@ -469,10 +470,41 @@ body {
 }
 
 /* ============================================================
-   ============= LARGE DESKTOP (≥1025px) =======================
+   ============= DESKTOP STYLES (1024px and up) ===============
    ============================================================ */
 
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
+  /* Hero Section */
+  .hero-section {
+    padding: 120px 60px 120px;
+  }
+
+  .hero-container {
+    gap: 80px;
+  }
+
+  .hero-heading {
+    font-size: 3.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+  }
+
+  .image-wrapper {
+    max-width: 500px;
+  }
+}
+
+/* ============================================================
+   ============= LARGE DESKTOP (1280px and up) ================
+   ============================================================ */
+
+@media (min-width: 1280px) {
+  .hero-heading {
+    font-size: 4rem;
+  }
+
   .project-content-side,
   .project-image-side {
     flex: 1;

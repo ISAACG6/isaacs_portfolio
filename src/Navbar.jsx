@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import "./StyledNavbar.css";
+import "./index.css";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,8 +26,7 @@ export default function Navigation() {
           className="logo-brand d-flex align-items-center gap-2"
           onClick={() => setIsMenuOpen(false)}
         >
-          <span className="logo-desktop">IG</span>
-          <img src="/IsaacHeadshot.JPG" alt="Isaac" className="logo-mobile" />
+          <span className="logo">IG</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="main-nav" className="navbar-toggler">
