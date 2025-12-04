@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "./index.css";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import "./StyledNavbar.css";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,52 +18,57 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="container d-flex align-items-center justify-content-between">
-        <NavLink
-          to="/"
-          className="logo-brand d-flex align-items-center gap-2 text-light"
+    <Navbar expand="lg" className="styled-navbar sticky-top" expanded={isMenuOpen} onToggle={setIsMenuOpen}>
+      <Container>
+        <Navbar.Brand 
+          as={NavLink} 
+          to="/" 
+          className="logo-brand d-flex align-items-center gap-2"
           onClick={() => setIsMenuOpen(false)}
         >
           <span className="logo-desktop">IG</span>
           <img src="/IsaacHeadshot.JPG" alt="Isaac" className="logo-mobile" />
-        </NavLink>
+        </Navbar.Brand>
 
-        <button
-          className="menu-toggle fs-3 border-0 bg-transparent d-lg-none"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
+        <Navbar.Toggle aria-controls="main-nav" className="navbar-toggler">
           ☰
-        </button>
+        </Navbar.Toggle>
 
-        <div
-          className={`nav-links d-lg-flex gap-4 ${isMenuOpen ? "active" : ""}`}
-        >
-          <NavLink
-            to="/"
-            className={navLinkClass}
-            onClick={handlePortfolioClick}
-          >
-            Portfolio
-          </NavLink>
+        <Navbar.Collapse id="main-nav">
+          <Nav className="ms-auto">
+            <div className="nav-link-wrapper">
+              <NavLink 
+                to="/" 
+                className={navLinkClass}
+                onClick={handlePortfolioClick}
+                end
+              >
+                Portfolio
+              </NavLink>
+            </div>
 
-          <NavLink
-            to="/about"
-            className={navLinkClass}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            About
-          </NavLink>
+            <div className="nav-link-wrapper">
+              <NavLink 
+                to="/about" 
+                className={navLinkClass}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </NavLink>
+            </div>
 
-          <NavLink
-            to="/resume"
-            className={navLinkClass}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Resume
-          </NavLink>
-        </div>
-      </div>
-    </nav>
+            <div className="nav-link-wrapper">
+              <NavLink 
+                to="/resume" 
+                className={navLinkClass}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Resume
+              </NavLink>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
