@@ -4,7 +4,7 @@ import './index.css';
 
 export default function Footer () {
     return (
-        <div>
+        <div id="contact">
             <h1>
                 Portfolio Footer
             </h1>
