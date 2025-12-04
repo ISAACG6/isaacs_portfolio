@@ -1,93 +1,66 @@
 import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./index.css";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const navLinkClass = ({ isActive }) =>
+    `nav-link-custom ${isActive ? "nav-link-active" : ""}`;
+
+  const handlePortfolioClick = (e) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+
+    navigate("/", { state: { scrollToProjects: true } });
   };
 
   return (
     <nav className="navbar">
-      <div className="container">
-        {/* Logo – scroll to top/home */}
-        <a
-          href="#home"
-          className="logo-brand"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("home");
-            setIsMenuOpen(false);
-          }}
+      <div className="container d-flex align-items-center justify-content-between">
+        <NavLink
+          to="/"
+          className="logo-brand d-flex align-items-center gap-2 text-light"
+          onClick={() => setIsMenuOpen(false)}
         >
           <span className="logo-desktop">IG</span>
-          <img
-            src="/IsaacHeadshot.JPG"
-            alt="Isaac"
-            className="logo-mobile"
-          />
-        </a>
+          <img src="/IsaacHeadshot.JPG" alt="Isaac" className="logo-mobile" />
+        </NavLink>
 
-        {/* Hamburger for mobile */}
         <button
-          className="menu-toggle"
+          className="menu-toggle fs-3 border-0 bg-transparent d-lg-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           ☰
         </button>
 
-        {/* Nav Links */}
-        <div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
-          <a
-            href="#about"
-            className="nav-link-custom"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("about");
-              setIsMenuOpen(false);
-            }}
+        <div
+          className={`nav-links d-lg-flex gap-4 ${isMenuOpen ? "active" : ""}`}
+        >
+          <NavLink
+            to="/"
+            className={navLinkClass}
+            onClick={handlePortfolioClick}
+          >
+            Portfolio
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={navLinkClass}
+            onClick={() => setIsMenuOpen(false)}
           >
             About
-          </a>
+          </NavLink>
 
-          <a
-            href="#projects"
-            className="nav-link-custom"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("projects");
-              setIsMenuOpen(false);
-            }}
-          >
-            Projects
-          </a>
-
-          <a
-            href="#resume"
-            className="nav-link-custom"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("resume");
-              setIsMenuOpen(false);
-            }}
+          <NavLink
+            to="/resume"
+            className={navLinkClass}
+            onClick={() => setIsMenuOpen(false)}
           >
             Resume
-          </a>
-
-          <a
-            href="#contact"
-            className="nav-link-custom"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("contact");
-              setIsMenuOpen(false);
-            }}
-          >
-            Contact
-          </a>
+          </NavLink>
         </div>
       </div>
     </nav>

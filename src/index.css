@@ -36,6 +36,17 @@ body {
   width: 100%
 }
 
+.nav-link-custom {
+  color: #f8f9fa;
+  text-decoration: none;
+  position: relative; /* for underline pseudo-element */
+}
+
+/* Base active style (mobile/tablet): simple bottom border */
+.nav-link-custom.nav-link-active {
+  border-bottom: 2px solid #1f7a3a; /* darker green */
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -48,8 +59,10 @@ body {
 .logo-brand {
   display: flex;
   align-items: center;
+  gap: 0.75rem;   /* spacing between logo and title */
   text-decoration: none;
 }
+
 
 /* MOBILE: PFP visible */
 .logo-mobile {
@@ -139,6 +152,10 @@ body {
     padding: 0;
     background: none;
     box-shadow: none;
+  }
+
+  .nav-link-custom.nav-link-active {
+    border-bottom-width: 3px;
   }
 
   /* desktop: show IG text */
@@ -378,6 +395,11 @@ body {
     justify-content: flex-end;
   }
 
+  .profile-image-large {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    border-radius: 15px; /* optional */
+  }
+
   .text-overlay {
     padding: 40px;
     margin-bottom: 0;
@@ -396,6 +418,7 @@ body {
   .profile-image-container {
     max-width: 500px;
     transform: translateY(80px);
+    border-radius: 15px;
   }
 
   .green-accent-bar {
