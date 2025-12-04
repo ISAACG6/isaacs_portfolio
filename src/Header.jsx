@@ -31,7 +31,8 @@ export default function Header () {
 
                     {/* Nav Links */}
                     <div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
-                    <a href="#projects" className="nav-link-custom active-link">Projects</a>
+                    <a href="#About" className="nav-link-custom">About</a>
+                    <a href="#projects" className="nav-link-custom">Projects</a>
                     <a href="#resume" className="nav-link-custom">Resume</a>
                     <a href="#contact" className="nav-link-custom">Contact</a>
                     </div>
